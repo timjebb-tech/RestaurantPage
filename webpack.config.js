@@ -12,7 +12,8 @@ export default {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/template.html",
+      template: "./src/template.html", // 2. Point to your source HTML file
+      filename: 'index.html',        // Name of the output file in /dist
     }),
   ],
   module: {
