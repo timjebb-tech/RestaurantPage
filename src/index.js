@@ -1,4 +1,7 @@
 import {loadPage} from './page-load.js';
+import {displayHomeTab} from './home.js';
+import {displayAboutTab} from './about.js';
+import {displayMenuTab} from './menu.js';
 import './style.css'; // Webpack will now inject this automatically
 
 
@@ -7,55 +10,47 @@ loadPage();
 
 
 const homeButton = document.getElementById('home-button');
-const menuButton = document.getElementById('menu-button');
+const menuDrinksButton = document.getElementById('menu-drinks-button');
+const menuCakesButton = document.getElementById('menu-cakes-button');
 const aboutButton = document.getElementById('about-button');
 
 function clearContent() {
     const content = document.querySelector("#content");
-    //content.innerHTML = ''; 
     content.replaceChildren(); 
-    //content.textContent = ''; 
+
 }
 
 homeButton.addEventListener('click', () => {
     clearContent();
-    // Create a new <p> element
-    const newParagraph = document.createElement('p');
-    
-    // Add text to it
-    newParagraph.textContent = 'This paragraph was added because you clicked the home button!';
-
-    const content = document.querySelector("#content");
-    
-    // Insert it right after the <h1>
-    content.appendChild(newParagraph);
-  
+    displayHomeTab();  
 });
 
-menuButton.addEventListener('click', () => {
+menuDrinksButton.addEventListener('click', () => {
     clearContent();
-    // Create a new <p> element
-    const newParagraph = document.createElement('p');
-    
-    // Add text to it
-    newParagraph.textContent = 'This paragraph was added because you clicked the menu button!';
+    displayMenuTab('drinks');
+});
 
-    const content = document.querySelector("#content");
-    
-    // Insert it right after the <h1>
-    content.appendChild(newParagraph);
+menuCakesButton.addEventListener('click', () => {
+    clearContent();
+    displayMenuTab('bakery');
 });
 
 aboutButton.addEventListener('click', () => {
     clearContent();
-    // Create a new <p> element
-    const newParagraph = document.createElement('p');
-    
-    // Add text to it
-    newParagraph.textContent = 'This paragraph was added because you clicked the about button!';
+    displayAboutTab();  
+});
 
-    const content = document.querySelector("#content");
+const tabs = document.querySelectorAll('.tab-btn');
+
+tabs.forEach(clickedTab => {
+  clickedTab.addEventListener('click', () => {
+    // 1. Remove active class from all tabs
+    tabs.forEach(tab => tab.classList.remove('active'));
     
-    // Insert it right after the <h1>
-    content.appendChild(newParagraph);
+    // 2. Add active class to the clicked tab
+    clickedTab.classList.add('active');
+    
+    // 3. Clear and update content based on which tab was clicked
+    // updateTabContent(clickedTab.textContent);
+  });
 });

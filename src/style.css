@@ -1,3 +1,17 @@
+/* --- Theme Variables --- */
+:root {
+  --espresso: #2C1B14;
+  --pumpkin: #D96B27;
+  --pumpkin-glow: #F2913D;
+  --cinnamon: #8C4323;
+  --cream: #FAF5EF;
+  --latte-foam: #F2E3D5;
+  
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Fredoka', sans-serif;
+}
+
+
 body {
     position: relative; /* Keeps the background relative to the screen */
 }
@@ -29,4 +43,219 @@ body::before {
 #pumpkin-image {
     height: 10vh;
     width: auto;
+}
+
+/* Reset the list styling while keeping the flexbox layout */
+.tab-container {
+  display: flex;
+  gap: 8px;
+  list-style: none; /* Removes standard bullet points */
+  margin: 0;
+  padding: 0;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+/* Ensure the li container doesn't warp spacing */
+.tab-container li {
+  margin: 0;
+  padding: 0;
+}
+
+/* The tab-btn CSS rules from earlier stay exactly the same! */
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  border-radius: 6px 6px 0 0;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  bottom: -2px; /* Adjusted slightly to rest cleanly on the 2px border */
+}
+
+.tab-btn.active {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #2563eb;
+  border-radius: 3px 3px 0 0;
+}
+
+/* --- Google Fonts Configuration --- */
+@import url('https://googleapis.com');
+
+
+
+/* --- Base Layout --- */
+body {
+  background-color: var(--cream);
+  color: var(--espresso);
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* --- Header / Hero Area --- */
+.item-header {
+  background: linear-gradient(135deg, var(--cinnamon), var(--espresso));
+  color: var(--cream);
+  text-align: center;
+  padding: 4rem 2rem;
+  border-bottom: 8px solid var(--pumpkin);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fallback subtle pattern using pure CSS */
+.item-header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0.05;
+  background-image: radial-gradient(var(--pumpkin) 20%, transparent 20%),
+                    radial-gradient(var(--pumpkin) 20%, transparent 20%);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+}
+
+.item-header h1 {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  margin: 0 0 0.5rem 0;
+  font-style: italic;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.item-header p {
+  font-size: 1.2rem;
+  color: var(--latte-foam);
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* --- Main Layout Container --- */
+.container {
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+
+/* --- Section Styling --- */
+.menu-section {
+  background-color: #ffffff;
+  border-radius: 24px; /* Soft, organic rounding */
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 8px 24px rgba(44, 27, 20, 0.06);
+  border: 1px solid var(--latte-foam);
+  position: relative;
+}
+
+.menu-section::after {
+  content: '🎃';
+  position: absolute;
+  top: -15px;
+  right: 30px;
+  font-size: 1.8rem;
+  background: var(--cream);
+  padding: 0 10px;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  color: var(--cinnamon);
+  margin-top: 0;
+  margin-bottom: 2rem;
+  border-bottom: 2px dashed var(--pumpkin);
+  padding-bottom: 0.5rem;
+}
+
+/* --- Grid Structure for Menu Items --- */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* --- Individual Menu Item Card --- */
+.menu-item {
+  border-left: 4px solid var(--pumpkin);
+  padding-left: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.menu-item:hover {
+  transform: translateX(4px);
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.25rem;
+}
+
+.item-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--espresso);
+  margin: 0;
+}
+
+.item-price {
+  font-family: var(--font-heading);
+  font-weight: bold;
+  color: var(--pumpkin);
+  font-size: 1.2rem;
+}
+
+.item-description {
+  font-size: 0.95rem;
+  color: #615149;
+  margin: 0;
+}
+
+/* --- Call-to-Action / Interactive Buttons --- */
+.btn-pumpkin {
+  display: inline-block;
+  background-color: var(--pumpkin);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.8rem 2rem;
+  border-radius: 50px; /* Pumpkin-seed shaped ends */
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(217, 107, 39, 0.3);
+}
+
+.btn-pumpkin:hover {
+  background-color: var(--pumpkin-glow);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(217, 107, 39, 0.5);
+}
+
+/* --- Footer --- */
+.cafe-footer {
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--espresso);
+  color: var(--latte-foam);
+  margin-top: 5rem;
+  font-size: 0.9rem;
 }
